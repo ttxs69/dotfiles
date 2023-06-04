@@ -5,17 +5,28 @@
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize) ;; You might already have this line
 
+;; set variables
 ;; close backup
 (setq make-backup-files nil)
+;; close org edit invisiable
+(setq org-catch-invisible-edits #'error)
+;; set todo keywords
+(setq org-todo-keywords
+      '((sequence "TODO" "WORKING" "|" "DONE(d)")))
 
 ;; global key bindings
+;; set org keys
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
 ;; global enabled mode
+;; enable company mode
 (global-company-mode)
+;; enable linum mode
 (global-linum-mode)
+;; enable recentf mode
+(recentf-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
