@@ -4,6 +4,8 @@
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize) ;; You might already have this line
+;; close backup
+(setq make-backup-files nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
