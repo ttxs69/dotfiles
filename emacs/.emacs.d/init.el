@@ -12,7 +12,7 @@
 (setq org-catch-invisible-edits #'error)
 ;; set todo keywords
 (setq org-todo-keywords
-      '((sequence "TODO" "WORKING" "|" "DONE(d)")))
+      '((sequence "TODO" "WORKING" "|" "DONE(d!)")))
 
 ;; global key bindings
 ;; set org keys
