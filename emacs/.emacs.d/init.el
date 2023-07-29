@@ -48,6 +48,12 @@
   :config
   (vertico-mode))
 
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+         ("M-p" . projectile-command-map)))
+
 ;; set up builtin packages config
 (use-package org
   :ensure nil
@@ -76,7 +82,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files 'org-directory)
  '(package-selected-packages
-   '(vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(projectile vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
