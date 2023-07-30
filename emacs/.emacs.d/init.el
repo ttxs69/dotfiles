@@ -43,6 +43,10 @@
   (yas-reload-all)
   :hook ((prog-mode) . yas-minor-mode))
 
+;; install autopep8 for python auto fmt
+(use-package py-autopep8
+  :hook ((python-mode) . py-autopep8-mode))
+
 ;; install rust-mode for rust
 (use-package rust-mode
   :config
@@ -252,7 +256,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ace-window avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(py-autopep8 ace-window avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
