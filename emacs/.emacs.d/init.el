@@ -51,11 +51,16 @@
   (prettify-symbols-mode))
 
 ;; install lsp-mode for code
+;; NOTE: need to install external packages which are the language server
+;; `clangd' for c++-mode
+;; `python-lsp-server' for python-mode
+;; `rust-analyzer' for rust-mode
+;; `deno' for js-mode
 (use-package lsp-mode
   :init
   ;; add pylsp path to exec-path
   (add-to-list 'exec-path "/opt/homebrew/bin/")
-  :hook ((c++-mode python-mode rust-mode) . lsp-deferred)
+  :hook ((c++-mode python-mode rust-mode js-mode) . lsp-deferred)
   :commands lsp)
 ;; install lsp-ui for better lsp ui
 (use-package lsp-ui
@@ -200,6 +205,7 @@
   :init (doom-modeline-mode 1))
 
 ;; set up builtin packages config
+;; macos need to install external `mactex' package for export as pdf
 (use-package org
   :ensure nil
   :custom
