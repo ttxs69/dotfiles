@@ -227,7 +227,8 @@
 ;; set variables
 ;; close backup
 (setq make-backup-files nil)
-
+;; use space instead of tabs
+(setq-default indent-tabs-mode nil)
 ;; global enabled mode
 ;; enable linum mode
 (global-linum-mode)
