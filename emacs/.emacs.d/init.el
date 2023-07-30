@@ -42,6 +42,23 @@
 (use-package lsp-mode
   :hook ((c++-mode python-mode rust-mode) . lsp-deferred)
   :commands lsp)
+;; install lsp-ui for better lsp ui
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+
+;; Enable rich annotations using the Marginalia package
+(use-package marginalia
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+  ;; The :init section is always executed.
+  :config
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
 
 ;; Enable vertico for minibuffer
 (use-package vertico
@@ -53,6 +70,24 @@
   (projectile-mode +1)
   :bind (:map projectile-mode-map
          ("M-p" . projectile-command-map)))
+
+;; appearence setup
+;; install doom themes
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-one t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+;; install doom mode line
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
 
 ;; set up builtin packages config
 (use-package org
@@ -70,7 +105,8 @@
 ;; set variables
 ;; close backup
 (setq make-backup-files nil)
-
+;; Isearch convenience, space matches anything (non-greedy)
+(setq search-whitespace-regexp ".*?")
 ;; global enabled mode
 ;; enable linum mode
 (global-linum-mode)
@@ -82,7 +118,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files 'org-directory)
  '(package-selected-packages
-   '(projectile vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(doom-modeline doom-themes lsp-ui marginalia projectile vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
