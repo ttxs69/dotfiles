@@ -32,6 +32,11 @@
 ;; install magit for git
 (use-package magit)
 
+;; install avy for quick jump
+(use-package avy
+  :bind (("M-g w" . avy-goto-word-1)
+	 ("M-g f" . avy-goto-line)))
+
 ;; install yasnippet for code snippets
 (use-package yasnippet
   :config
@@ -47,6 +52,9 @@
 
 ;; install lsp-mode for code
 (use-package lsp-mode
+  :init
+  ;; add pylsp path to exec-path
+  (add-to-list 'exec-path "/opt/homebrew/bin/")
   :hook ((c++-mode python-mode rust-mode) . lsp-deferred)
   :commands lsp)
 ;; install lsp-ui for better lsp ui
@@ -57,26 +65,6 @@
 (use-package marginalia
   :config
   (marginalia-mode))
-
-;; install embark to enhance minibuffer
-(use-package embark
-  :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("M-." . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-  :init
-  ;; Optionally replace the key help with a completing-read interface
-  (setq prefix-help-command #'embark-prefix-help-command)
-  ;; Show the Embark target at point via Eldoc.  You may adjust the Eldoc
-  ;; strategy, if you want to see the documentation from multiple providers.
-  (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
-  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
-  :config
-  ;; Hide the mode line of the Embark live/completions buffers
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                 nil
-                 (window-parameters (mode-line-format . none)))))
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
@@ -215,10 +203,16 @@
   (org-catch-invisible-edits #'error "close org edit invisiable") 
   (org-todo-keywords '((sequence "TODO" "WORKING" "|" "DONE(d!)")) "set todo keywords")
   (org-default-notes-file (concat org-directory "/notes.org") "set org capture files")
+  (org-agenda-files '("~/daily/org/"))
   :bind (("C-c l" . org-store-link)
 	 ("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
   )
+
+;; install org-modern
+(use-package org-modern
+  :hook((org-mode . org-modern-mode)
+	(org-agenda-finalize . org-modern-agenda)))
 
 ;; set variables
 ;; close backup
@@ -234,9 +228,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files 'org-directory)
  '(package-selected-packages
-   '(embark-consult embark projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
