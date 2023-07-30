@@ -35,7 +35,7 @@
 ;; install avy for quick jump
 (use-package avy
   :bind (("M-g w" . avy-goto-word-1)
-	 ("M-g f" . avy-goto-line)))
+	 ("M-g l" . avy-goto-line)))
 
 ;; install yasnippet for code snippets
 (use-package yasnippet
