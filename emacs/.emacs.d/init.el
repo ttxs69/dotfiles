@@ -168,6 +168,10 @@
 (use-package expand-region
   :bind ("C-^" . er/expand-region))
 
+;; install ace-window
+(use-package ace-window
+  :bind("M-o" . ace-window))
+
 ;; install smartparens
 (use-package smartparens
   :diminish smartparens-mode ;; Do not show in modeline
@@ -223,13 +227,25 @@
 (global-linum-mode)
 (delete-selection-mode)
 
+;;setup mu custom functions
+(defun my/open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+(global-set-key (kbd "C-c i") 'my/open-init-file)
+;; open recentf mode
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(setq recentf-max-saved-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(ace-window avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
