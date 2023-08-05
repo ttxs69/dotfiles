@@ -234,8 +234,7 @@
 ;; use space instead of tabs
 (setq-default indent-tabs-mode nil)
 ;; global enabled mode
-;; enable linum mode
-(global-linum-mode)
+(global-display-line-numbers-mode)
 (delete-selection-mode)
 
 ;;setup mu custom functions
