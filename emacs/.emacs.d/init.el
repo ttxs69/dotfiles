@@ -64,7 +64,42 @@
   :init
   ;; add pylsp path to exec-path
   (add-to-list 'exec-path "/opt/homebrew/bin/")
-  :hook ((c++-mode python-mode rust-mode js-mode) . lsp-deferred)
+  :config
+  (setq lsp-clients-clangd-args '(
+                                  ;; If set to true, code completion will include index symbols that are not defined in the scopes
+                                  ;; (e.g. namespaces) visible from the code completion point. Such completions can insert scope qualifiers
+                                  "--all-scopes-completion"
+                                  ;; Index project code in the background and persist index on disk.
+                                  "--background-index"
+                                  ;; Enable clang-tidy diagnostics
+                                  "--clang-tidy"
+                                  ;; Whether the clang-parser is used for code-completion
+                                  ;;   Use text-based completion if the parser is not ready (auto)
+                                  "--completion-parse=auto"
+                                  ;; Granularity of code completion suggestions
+                                  ;;   One completion item for each semantically distinct completion, with full type information (detailed)
+                                  "--completion-style=detailed"
+                                  ;; clang-format style to apply by default when no .clang-format file is found
+                                  "--fallback-style=LLVM"
+                                  ;; When disabled, completions contain only parentheses for function calls.
+                                  ;; When enabled, completions also contain placeholders for method parameters
+                                  "--function-arg-placeholders"
+                                  ;; Add #include directives when accepting code completions
+                                  ;;   Include what you use. Insert the owning header for top-level symbols, unless the
+                                  ;;   header is already directly included or the symbol is forward-declared
+                                  "--header-insertion=iwyu"
+                                  ;; Prepend a circular dot or space before the completion label, depending on whether an include line will be inserted or not
+                                  "--header-insertion-decorators"
+                                  ;; Enable index-based features. By default, clangd maintains an index built from symbols in opened files.
+                                  ;; Global index support needs to enabled separatedly
+                                  "--index"
+                                  ;; Attempts to fix diagnostic errors caused by missing includes using index
+                                  "--suggest-missing-includes"
+                                  ;; Number of async workers used by clangd. Background index also uses this many workers.
+                                  "-j=4"
+                                  ))
+  :hook (((c++-mode python-mode rust-mode js-mode) . lsp-deferred)
+         ((before-save) . lsp-format-buffer))
   :commands lsp)
 ;; install lsp-ui for better lsp ui
 (use-package lsp-ui
@@ -255,7 +290,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(py-autopep8 ace-window avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(company-lsp py-autopep8 ace-window avy org-modern embark-consult projectile smartparens smartparens-config expand-region consult orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
