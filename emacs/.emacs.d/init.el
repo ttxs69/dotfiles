@@ -25,10 +25,6 @@
 ;; install magit for git
 (use-package magit)
 
-;; install avy for quick jump
-(use-package avy
-  :bind (("M-g" . avy-goto-line)))
-
 ;; install yasnippet for code snippets
 (use-package yasnippet
   :config
@@ -196,7 +192,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-lsp py-autopep8 ace-window avy org-modern embark-consult smartparens smartparens-config expand-region orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(company-lsp py-autopep8 ace-window org-modern embark-consult smartparens smartparens-config expand-region orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
