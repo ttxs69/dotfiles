@@ -22,13 +22,6 @@
   :custom
   (company-idle-delay 0.0 "Provide instant autocompletion."))
 
-;; install projectile
-(use-package projectile
-  :init
-  (projectile-mode +1)
-  :bind (:map projectile-mode-map
-              ("C-c p" . projectile-command-map)))
-
 ;; install magit for git
 (use-package magit)
 
@@ -203,7 +196,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-lsp py-autopep8 ace-window avy org-modern embark-consult projectile smartparens smartparens-config expand-region orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(company-lsp py-autopep8 ace-window avy org-modern embark-consult smartparens smartparens-config expand-region orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
