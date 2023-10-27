@@ -1,15 +1,5 @@
 [user]
 	name = sarace
-	email = wshuai@proton.me
-	signingkey = 0xF76F2E1F0D35111E
-
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
-
-[commit]
-	gpgsign = false
+	email = sarace@huisa.win
 [init]
 	defaultBranch = main
