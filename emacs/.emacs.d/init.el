@@ -182,14 +182,19 @@
 (setq recentf-max-saved-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
+;; enable flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-fold-catch-invisible-edits #'error nil nil "close org edit invisiable")
  '(package-selected-packages
-   '(company-lsp py-autopep8 ace-window org-modern smartparens smartparens-config expand-region orderless doom-modoeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(flycheck company-lsp py-autopep8 ace-window org-modern smartparens smartparens-config expand-region orderless doom-modoeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
