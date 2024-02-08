@@ -98,11 +98,6 @@
   :config
   (marginalia-mode))
 
-;; Consult users will also want the embark-consult package.
-(use-package embark-consult
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
-
 ;; install orderless for better fuzz search in minibuffer
 (use-package orderless
   :custom
@@ -150,11 +145,11 @@
 (use-package org
   :ensure nil
   :custom
-  (org-directory "~/daily/org/")
+  (org-directory "~/org/")
   (org-catch-invisible-edits #'error "close org edit invisiable") 
   (org-todo-keywords '((sequence "TODO" "WORKING" "|" "DONE(d!)")) "set todo keywords")
   (org-default-notes-file (concat org-directory "/notes.org") "set org capture files")
-  (org-agenda-files '("~/daily/org/"))
+  (org-agenda-files '("~/org/"))
   :bind (("C-c l" . org-store-link)
 	 ("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
@@ -170,6 +165,7 @@
 (setq make-backup-files nil)
 ;; use space instead of tabs
 (setq-default indent-tabs-mode nil)
+
 ;; global enabled mode
 (global-display-line-numbers-mode)
 (delete-selection-mode)
@@ -179,6 +175,7 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 (global-set-key (kbd "C-c i") 'my/open-init-file)
+
 ;; open recentf mode
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
@@ -192,7 +189,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-lsp py-autopep8 ace-window org-modern embark-consult smartparens smartparens-config expand-region orderless doom-modeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
+   '(company-lsp py-autopep8 ace-window org-modern smartparens smartparens-config expand-region orderless doom-modoeline doom-themes lsp-ui marginalia vertico yasnippet rust-mode lsp-mode use-package company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
