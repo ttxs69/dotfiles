@@ -138,7 +138,7 @@
 
 ;; install doom mode line
 (use-package doom-modeline
-  :init (doom-modeline-mode 1))
+  :config (doom-modeline-mode 1))
 
 ;; set up builtin packages config
 ;; macos need to install external `mactex' package for export as pdf
@@ -185,7 +185,14 @@
 ;; enable flycheck
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
+  :config (global-flycheck-mode))
+
+;; enable ido
+(use-package ido
+  :init (ido-mode)
+  :custom
+  (ido-enable-flex-matching t "enable flex matching")
+  (ido-everywhere t "enable ido everywhere"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
