@@ -113,6 +113,10 @@
 (use-package ace-window
   :bind("C-c o" . ace-window))
 
+;; install avy
+(use-package avy
+  :bind("M-j" . avy-goto-char-timer))
+
 ;; install smartparens
 (use-package smartparens
   :diminish smartparens-mode ;; Do not show in modeline
@@ -149,7 +153,14 @@
   (org-catch-invisible-edits #'error "close org edit invisiable") 
   (org-todo-keywords '((sequence "TODO" "WORKING" "|" "DONE(d!)")) "set todo keywords")
   (org-default-notes-file (concat org-directory "/notes.org") "set org capture files")
-  (org-agenda-files '("~/org/"))
+  (org-agenda-files '(org-directory))
+  (org-gtd-file (concat org-directory "/gtd.org"))
+  (org-journal-file (concat org-directory "/journal.org"))
+  (org-capture-templates
+      '(("t" "Todo" entry (file+headline org-gtd-file "Tasks")
+         "* TODO %?\n %i\n %a")
+        ("j" "Journal" entry (file+datetree org-journal-file)
+         "* %?\nEntered on %U\n %i\n %a")))
   :bind (("C-c l" . org-store-link)
 	 ("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
