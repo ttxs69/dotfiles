@@ -153,10 +153,11 @@
   (org-catch-invisible-edits #'error "close org edit invisiable") 
   (org-todo-keywords '((sequence "TODO" "WORKING" "|" "DONE(d!)")) "set todo keywords")
   (org-default-notes-file (concat org-directory "/notes.org") "set org capture files")
-  (org-agenda-files '(org-directory))
-  (org-gtd-file (concat org-directory "/gtd.org"))
-  (org-journal-file (concat org-directory "/journal.org"))
-  (org-capture-templates
+  (org-agenda-files (directory-files-recursively org-directory "\\.org$"))
+  :config
+  (setq org-gtd-file (concat org-directory "/gtd.org"))
+  (setq org-journal-file (concat org-directory "/journal.org"))
+  (setq org-capture-templates
       '(("t" "Todo" entry (file+headline org-gtd-file "Tasks")
          "* TODO %?\n %i\n %a")
         ("j" "Journal" entry (file+datetree org-journal-file)
