@@ -4,7 +4,6 @@
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize) ;; You might already have this line
-(package-refresh-contents) ;; refresh packages
 
 ;; install use-package
 (unless (package-installed-p 'use-package)
