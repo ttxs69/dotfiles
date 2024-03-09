@@ -206,6 +206,10 @@
   (ido-enable-flex-matching t "enable flex matching")
   (ido-everywhere t "enable ido everywhere"))
 
+;; install evil
+(use-package evil
+  :init (evil-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
