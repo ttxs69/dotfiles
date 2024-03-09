@@ -198,18 +198,23 @@
 ;; enable flycheck
 (use-package flycheck
   :ensure t
-  :config (global-flycheck-mode))
+  :config
+  (global-flycheck-mode))
 
 ;; enable ido
 (use-package ido
-  :init (ido-mode)
+  :init
+  (ido-mode)
   :custom
   (ido-enable-flex-matching t "enable flex matching")
   (ido-everywhere t "enable ido everywhere"))
 
 ;; install evil
 (use-package evil
-  :init (evil-mode))
+  :init
+  (evil-mode)
+  :config
+  (evil-set-undo-system 'undo-redo))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
