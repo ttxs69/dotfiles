@@ -5,6 +5,7 @@
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize) ;; You might already have this line
 
+
 ;; install use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -103,11 +104,6 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
-
-;; Enable vertico for minibuffer
-(use-package vertico
-  :config
-  (vertico-mode))
 
 ;; install ace-window
 (use-package ace-window
