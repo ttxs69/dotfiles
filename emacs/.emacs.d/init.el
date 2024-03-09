@@ -96,14 +96,30 @@
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
-  :config
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  ;; The :init section is always executed.
+  :init
+
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
   (marginalia-mode))
 
-;; install orderless for better fuzz search in minibuffer
-(use-package orderless
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+;; Enable vertico for better minibuffer UI
+(use-package vertico
+  :init
+  (vertico-mode)
+
+  ;; Different scroll margin
+  (setq vertico-scroll-margin 0)
+  
+  ;; Grow and shrink the Vertico minibuffer
+  (setq vertico-resize t))
 
 ;; install ace-window
 (use-package ace-window
