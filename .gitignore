@@ -3,8 +3,5 @@ emacs/.emacs.d/elpa/
 emacs/.emacs.d/recentf
 emacs/.emacs.d/transient/
 emacs/.emacs.d/eshell/
-/emacs/.emacs.d/.lsp-session-*
-/emacs/.emacs.d/bookmarks
-/emacs/.emacs.d/projectile-bookmarks.eld
-/emacs/.emacs.d/projects
 emacs/.emacs.d/ido.last
+emacs/.emacs.d/eln-cache/
