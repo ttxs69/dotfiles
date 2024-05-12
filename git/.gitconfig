@@ -3,3 +3,7 @@
 	email = sarace@huisa.win
 [init]
 	defaultBranch = main
+[core]
+	excludesfile = ~/.gitignore_global
+[merge]
+	conflictstyle = diff3	
