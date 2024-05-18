@@ -46,7 +46,9 @@
   
 (use-package emacs
   :init
-  (load-theme 'tango-dark))
+  (load-theme 'tango-dark)
+  :config
+  (global-display-line-numbers-mode))
 
 (use-package org
   :init
