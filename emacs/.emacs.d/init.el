@@ -1,7 +1,19 @@
+; list the packages you want
+(setq package-list '(company magit))
+
 (setq package-archives '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize) ;; You might already have this line
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (defun my/open-init ()
   "open init.el"
@@ -49,20 +61,3 @@
   (load-theme 'tango-dark)
   :config
   (global-display-line-numbers-mode))
-
-(use-package org
-  :init
-  (global-org-modern-mode t))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(magit org-modern use-package company)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
