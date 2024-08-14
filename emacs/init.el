@@ -18,7 +18,7 @@
 (defun my/open-init ()
   "open init.el"
   (interactive)
-  (find-file "~/.emacs.d/init.el")
+  (find-file "~/.config/emacs/init.el")
 )
 
 (defun my/config-var ()

@@ -1,7 +1,7 @@
-emacs/.emacs.d/auto-save-list/
-emacs/.emacs.d/elpa/
-emacs/.emacs.d/recentf
-emacs/.emacs.d/transient/
-emacs/.emacs.d/eshell/
-emacs/.emacs.d/ido.last
-emacs/.emacs.d/eln-cache/
+emacs/auto-save-list/
+emacs/elpa/
+emacs/recentf
+emacs/transient/
+emacs/eshell/
+emacs/ido.last
+emacs/eln-cache/
