@@ -1,5 +1,5 @@
-; list the packages you want
-(setq package-list '(company magit))
+(require 'package)
+(setq package-enable-at-startup nil)
 
 (setq package-archives '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
@@ -11,9 +11,11 @@
   (package-refresh-contents))
 
 ; install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+ (unless (package-installed-p 'use-package)
+   (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
 
 (defun my/open-init ()
   "open init.el"
@@ -21,28 +23,9 @@
   (find-file "~/.config/emacs/init.el")
 )
 
-(defun my/config-var ()
-  "my config"
-  ;; close backup
-  (setq make-backup-files nil)
-  )
-
-(defun my/config-key ()
-  "setup key maps"
-  (global-set-key (kbd "C-c i") 'my/open-init ))
-
-(defun my/setup ()
-  "init"
-  (my/config-var)
-  (my/config-key)
-  ;; set up minibuffer
-  (fido-vertical-mode t)
-)
-
-(my/setup)
-
 ;; install company for auto completion
 (use-package company
+  :ensure t
   :config
   (global-company-mode t)
   :custom
@@ -50,7 +33,8 @@
 
 (use-package eglot
   :hook
-  (prog-mode . eglot-ensure))
+  (c++-mode . eglot-ensure)
+  (c-mode . eglot-ensure))
 
 (use-package eldoc
   :hook
@@ -60,4 +44,51 @@
   :init
   (load-theme 'tango-dark)
   :config
-  (global-display-line-numbers-mode))
+  (global-display-line-numbers-mode)
+    ;; close backup
+  (setq make-backup-files nil)
+  ;;; Don't display the start screen
+  (setq inhibit-startup-screen t)
+  ;;; Disable the toolbar
+  (tool-bar-mode nil)
+  ;; auto close bracket insertion
+  (electric-pair-mode t)
+  ;; set up minibuffer
+  (fido-vertical-mode t)
+  ;; setup key maps
+  (global-set-key (kbd "C-c i") 'my/open-init)
+)
+
+;; .editorconfig file support
+(use-package editorconfig
+    :ensure t
+    :config (editorconfig-mode t))
+
+;; Swift editing support
+(use-package swift-mode
+    :ensure t
+    :mode "\\.swift\\'"
+    :interpreter "swift")
+
+;; Rainbow delimiters makes nested delimiters easier to understand
+(use-package rainbow-delimiters
+    :ensure t
+    :hook ((prog-mode . rainbow-delimiters-mode)))
+
+;; Powerline
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
+
+;; Spaceline
+(use-package spaceline
+  :ensure t
+  :after powerline
+  :config
+  (spaceline-emacs-theme))
+
+(use-package org
+  :ensure t
+  :config
+  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$")))
