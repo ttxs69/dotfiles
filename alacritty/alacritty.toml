@@ -2,4 +2,4 @@
 option_as_alt = "OnlyLeft"
 [font]
 size = 16
-
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
