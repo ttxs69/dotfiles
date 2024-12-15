@@ -17,7 +17,7 @@ return {
 				}
 			})
 			require("mason-lspconfig").setup {
-				ensure_installed = { "lua_ls" },
+				ensure_installed = { "lua_ls", "rust_analyzer" },
 			}
 			require("mason-lspconfig").setup_handlers {
 				-- The first entry (without a key) will be the default handler
