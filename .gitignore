@@ -5,3 +5,4 @@ emacs/transient/
 emacs/eshell/
 emacs/ido.last
 emacs/eln-cache/
+nvim/lazy-lock.json
