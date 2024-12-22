@@ -2,7 +2,7 @@ return {
 	{ -- optional cmp completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter
-		event = "InsertEnter",
+		-- event = "InsertEnter",
 		-- these dependencies will only be loaded when cmp loads
 		-- dependencies are always lazy-loaded unless specified otherwise
 		dependencies = {
