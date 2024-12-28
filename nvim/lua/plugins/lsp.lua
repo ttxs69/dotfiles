@@ -32,7 +32,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "stylua", "yapf" },
+				ensure_installed = { "lua_ls", "rust_analyzer", "pyright" },
 			})
 			require("mason-lspconfig").setup_handlers({
 				-- The first entry (without a key) will be the default handler
