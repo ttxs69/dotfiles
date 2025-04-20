@@ -44,8 +44,8 @@
   :init
   (load-theme 'tango-dark)
   :config
+  (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode)
-  (setq display-line-numbers 'relative)
   ;;; close backup
   (setq make-backup-files nil)
   ;;; Don't display the start screen
