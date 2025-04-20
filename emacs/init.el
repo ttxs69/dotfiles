@@ -45,7 +45,8 @@
   (load-theme 'tango-dark)
   :config
   (global-display-line-numbers-mode)
-    ;; close backup
+  (setq display-line-numbers 'relative)
+  ;;; close backup
   (setq make-backup-files nil)
   ;;; Don't display the start screen
   (setq inhibit-startup-screen t)
