@@ -1,9 +1,9 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(setq package-archives '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
-                         ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(setq package-archives '(("gnu"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+                         ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize) ;; You might already have this line
 
 ; fetch the list of packages available 
@@ -66,7 +66,8 @@
   (fido-vertical-mode t)
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
-)
+  (setq dired-dwim-target t)
+  )
 
 ;; .editorconfig file support
 (use-package editorconfig
@@ -102,7 +103,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(company editorconfig expand-region magit pyvenv rainbow-delimiters
+	     spaceline swift-mode zig-mode)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
