@@ -23,6 +23,13 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; config kkp for kitty keyboard protocol
+(use-package kkp
+  :ensure t
+  :config
+  (global-kkp-mode t))
+
+
 ;; install company for auto completion
 (use-package company
   :ensure t
@@ -104,8 +111,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company editorconfig expand-region magit pyvenv rainbow-delimiters
-	     spaceline swift-mode zig-mode)))
+   '(company editorconfig expand-region kkp magit pyvenv
+	     rainbow-delimiters spaceline swift-mode zig-mode)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
