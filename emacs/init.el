@@ -76,12 +76,6 @@
   (setq dired-dwim-target t)
   )
 
-;; .editorconfig file support
-(use-package editorconfig
-    :ensure t
-    :config (editorconfig-mode t))
-
-
 ;; Rainbow delimiters makes nested delimiters easier to understand
 (use-package rainbow-delimiters
     :ensure t
