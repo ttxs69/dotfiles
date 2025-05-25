@@ -23,12 +23,19 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; multi cursor
+(use-package multiple-cursors
+  :ensure t
+  :bind
+  ("s->" . mc/mark-next-like-this)
+  ("s-<" . mc/mark-previous-like-this)
+  ("s-." . mc/mark-all-like-this))
+
 ;; config kkp for kitty keyboard protocol
 (use-package kkp
   :ensure t
   :config
   (global-kkp-mode t))
-
 
 ;; install company for auto completion
 (use-package company
@@ -54,7 +61,14 @@
 (use-package eldoc
   :hook
   (prog-mode . global-eldoc-mode))
-  
+
+(defun my/duplicate-line()
+  "duplicate current line and move to next line"
+    (interactive)
+  (duplicate-line)
+  (next-line)
+  )
+
 (use-package emacs
   :init
   (load-theme 'tango-dark)
@@ -74,6 +88,8 @@
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
   (setq dired-dwim-target t)
+  :bind
+  ("C-," . my/duplicate-line)
   )
 
 ;; Rainbow delimiters makes nested delimiters easier to understand
@@ -105,7 +121,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company editorconfig expand-region kkp magit pyvenv
+   '(company editorconfig expand-region kkp magit multiple-cursors pyvenv
 	     rainbow-delimiters spaceline swift-mode zig-mode)))
 
 (custom-set-faces
