@@ -73,7 +73,9 @@
   ;;; Don't display the start screen
   (setq inhibit-startup-screen t)
   ;;; Disable the toolbar
-  (tool-bar-mode nil)
+  (tool-bar-mode -1)
+  ;; disable menu bar
+  (menu-bar-mode -1)
   ;; auto close bracket insertion
   (electric-pair-mode t)
   ;; set up minibuffer
