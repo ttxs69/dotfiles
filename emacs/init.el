@@ -86,24 +86,6 @@
   ("C-," . duplicate-line)
   )
 
-;; Rainbow delimiters makes nested delimiters easier to understand
-(use-package rainbow-delimiters
-    :ensure t
-    :hook ((prog-mode . rainbow-delimiters-mode)))
-
-;; Powerline
-(use-package powerline
-  :ensure t
-  :config
-  (powerline-default-theme))
-
-;; Spaceline
-(use-package spaceline
-  :ensure t
-  :after powerline
-  :config
-  (spaceline-emacs-theme))
-
 (use-package org
   :ensure t
   :config
@@ -115,8 +97,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company editorconfig expand-region kkp magit multiple-cursors pyvenv
-	     rainbow-delimiters spaceline swift-mode zig-mode)))
+   '(company expand-region kkp magit multiple-cursors)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
