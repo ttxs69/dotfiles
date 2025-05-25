@@ -62,13 +62,6 @@
   :hook
   (prog-mode . global-eldoc-mode))
 
-(defun my/duplicate-line()
-  "duplicate current line and move to next line"
-    (interactive)
-  (duplicate-line)
-  (next-line)
-  )
-
 (use-package emacs
   :init
   (load-theme 'tango-dark)
@@ -88,8 +81,9 @@
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
   (setq dired-dwim-target t)
+  (setq duplicate-line-final-position 1)
   :bind
-  ("C-," . my/duplicate-line)
+  ("C-," . duplicate-line)
   )
 
 ;; Rainbow delimiters makes nested delimiters easier to understand
