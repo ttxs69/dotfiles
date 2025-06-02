@@ -23,6 +23,12 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; which key
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
 ;; move text
 (use-package move-text
   :ensure t
