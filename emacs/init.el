@@ -23,6 +23,12 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; move text
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))
+
 ;; multi cursor
 (use-package multiple-cursors
   :ensure t
@@ -83,7 +89,10 @@
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
   (setq dired-dwim-target t)
+  ;; set up duplicate line final position
   (setq duplicate-line-final-position 1)
+  ;; set use space not tab
+  (setq indent-tabs-mode nil)
   :bind
   ("C-," . duplicate-line)
   )
@@ -99,7 +108,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company expand-region kkp magit multiple-cursors)))
+   '(bazel company expand-region kkp magit move-text multiple-cursors)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
