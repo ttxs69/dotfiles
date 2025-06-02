@@ -22,6 +22,11 @@
   (interactive)
   (find-file "~/.config/emacs/init.el")
 )
+;; ace-window
+(use-package ace-window
+  :ensure t
+  :bind
+  ("M-o" . ace-window))
 
 ;; which key
 (use-package which-key
@@ -114,7 +119,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(bazel company expand-region kkp magit move-text multiple-cursors)))
+   '(ace-window bazel company expand-region kkp magit move-text
+                multiple-cursors)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
