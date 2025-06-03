@@ -29,11 +29,6 @@
   :config
   (marginalia-mode))
 
-(use-package embark
-  :ensure t
-  :bind
-  ("C-." . embark-act))
-
 ;; vertico
 (use-package vertico
   :ensure t
@@ -42,7 +37,8 @@
 
 ;; orderless
 (use-package orderless
-  :ensure t)
+  :ensure t
+)
 
 ;; ace-window
 (use-package ace-window
