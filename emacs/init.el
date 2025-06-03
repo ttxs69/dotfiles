@@ -22,6 +22,28 @@
   (interactive)
   (find-file "~/.config/emacs/init.el")
 )
+
+;; marginalia, for more context in minibuffer
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package embark
+  :ensure t
+  :bind
+  ("C-." . embark-act))
+
+;; vertico
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode))
+
+;; orderless
+(use-package orderless
+  :ensure t)
+
 ;; ace-window
 (use-package ace-window
   :ensure t
@@ -95,8 +117,6 @@
   (menu-bar-mode -1)
   ;; auto close bracket insertion
   (electric-pair-mode t)
-  ;; set up minibuffer
-  (fido-vertical-mode t)
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
   (setq dired-dwim-target t)
@@ -104,6 +124,16 @@
   (setq duplicate-line-final-position 1)
   ;; set use space not tab
   (setq indent-tabs-mode nil)
+  :custom
+  ;; Support opening new minibuffers from inside existing minibuffers.
+  (enable-recursive-minibuffers t)
+  ;; Hide commands in M-x which do not work in the current mode.  Vertico
+  ;; commands are hidden in normal buffers. This setting is useful beyond
+  ;; Vertico.
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt))
   :bind
   ("C-," . duplicate-line)
   )
@@ -119,8 +149,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ace-window bazel company expand-region kkp magit move-text
-                multiple-cursors)))
+   '(ace-window bazel company embark expand-region kkp magit move-text
+                multiple-cursors orderless)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
