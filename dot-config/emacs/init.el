@@ -23,6 +23,12 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; yasnippet
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode))
+
 ;; org-modern
 (use-package org-modern
   :ensure t
@@ -152,7 +158,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(ace-window bazel company embark expand-region kkp magit move-text
-		multiple-cursors orderless org-modern)))
+		multiple-cursors orderless org-modern yasnippet)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
