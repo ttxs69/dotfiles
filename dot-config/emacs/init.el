@@ -23,6 +23,12 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; org-modern
+(use-package org-modern
+  :ensure t
+  :config
+  (global-org-modern-mode))
+
 ;; marginalia, for more context in minibuffer
 (use-package marginalia
   :ensure t
@@ -99,7 +105,7 @@
 
 (use-package emacs
   :init
-  (load-theme 'tango-dark)
+  (load-theme 'modus-vivendi)
   :config
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode)
@@ -146,7 +152,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(ace-window bazel company embark expand-region kkp magit move-text
-                multiple-cursors orderless)))
+		multiple-cursors orderless org-modern)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
