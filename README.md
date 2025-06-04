@@ -3,11 +3,6 @@
 ## usage
 
 ```bash
-stow <sub dir>
-```
-
-## example
-
-```bash
-stow git
+git clone <repo url> ~/
+stow . -v --dotfiles
 ```
