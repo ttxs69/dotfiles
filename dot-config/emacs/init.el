@@ -23,6 +23,14 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; elfeed
+(use-package elfeed
+  :ensure t
+  :init
+  (setq elfeed-feeds '("https://lobste.rs/rss"))
+  :bind
+  ("C-x w" . elfeed))
+
 ;; yasnippet
 (use-package yasnippet
   :ensure t
@@ -156,9 +164,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
  '(package-selected-packages
-   '(ace-window bazel company embark expand-region kkp magit move-text
-		multiple-cursors orderless org-modern yasnippet)))
+   '(ace-window bazel company elfeed embark expand-region kkp magit
+		move-text multiple-cursors orderless org-modern
+		yasnippet)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
