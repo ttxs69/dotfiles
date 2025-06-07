@@ -23,6 +23,14 @@
   (find-file "~/.config/emacs/init.el")
 )
 
+;; smartparens
+(use-package smartparens
+  :ensure smartparens  ;; install the package
+  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+  :config
+  ;; load default config
+  (require 'smartparens-config))
+
 ;; elfeed
 (use-package elfeed
   :ensure t
@@ -137,8 +145,6 @@
   (tool-bar-mode -1)
   ;; disable menu bar
   (menu-bar-mode -1)
-  ;; auto close bracket insertion
-  (electric-pair-mode t)
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
   (setq dired-dwim-target t)
@@ -174,7 +180,7 @@
  '(package-selected-packages
    '(ace-window bazel company elfeed embark expand-region kkp magit
 		move-text multiple-cursors orderless org-modern
-		yasnippet yasnippet-snippets)))
+		smartparens yasnippet yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
