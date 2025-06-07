@@ -23,14 +23,6 @@
   (find-file "~/.config/emacs/init.el")
 )
 
-;; smartparens
-(use-package smartparens
-  :ensure smartparens  ;; install the package
-  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
-  :config
-  ;; load default config
-  (require 'smartparens-config))
-
 ;; elfeed
 (use-package elfeed
   :ensure t
@@ -179,8 +171,8 @@
  '(elfeed-feeds '("https://lobste.rs/rss"))
  '(package-selected-packages
    '(ace-window bazel company elfeed embark expand-region kkp magit
-		move-text multiple-cursors orderless org-modern
-		smartparens yasnippet yasnippet-snippets)))
+                move-text multiple-cursors orderless org-modern
+                yasnippet yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
