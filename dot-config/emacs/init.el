@@ -27,7 +27,9 @@
 (use-package elfeed
   :ensure t
   :init
-  (setq elfeed-feeds '("https://lobste.rs/rss"))
+  (setq elfeed-feeds '("https://lobste.rs/rss"
+		       "https://nullprogram.com/feed/"
+		       "https://planet.emacslife.com/atom.xml"))
   :bind
   ("C-x w" . elfeed))
 
@@ -36,6 +38,10 @@
   :ensure t
   :config
   (yas-global-mode))
+
+;; yasnippet-snippets
+(use-package yasnippet-snippets
+  :ensure t)
 
 ;; org-modern
 (use-package org-modern
@@ -164,11 +170,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
+ '(elfeed-feeds '("https://lobste.rs/rss"))
  '(package-selected-packages
    '(ace-window bazel company elfeed embark expand-region kkp magit
 		move-text multiple-cursors orderless org-modern
-		yasnippet)))
+		yasnippet yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
