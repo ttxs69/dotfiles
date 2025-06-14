@@ -22,6 +22,12 @@
   (interactive)
   (find-file "~/.config/emacs/init.el")
 )
+;; install htmlize for code highlight
+(use-package htmlize
+  :ensure t)
+
+;; load blog-publish.el
+(load-file "./blog-publish.el")
 
 ;; elfeed
 (use-package elfeed
@@ -29,7 +35,8 @@
   :init
   (setq elfeed-feeds '("https://lobste.rs/rss"
 		       "https://nullprogram.com/feed/"
-		       "https://planet.emacslife.com/atom.xml"))
+		       "https://planet.emacslife.com/atom.xml"
+                       "https://opensource.com/feed"))
   :bind
   ("C-x w" . elfeed))
 
@@ -141,6 +148,7 @@
   (menu-bar-mode -1)
   ;; setup key maps
   (global-set-key (kbd "C-c i") 'my/open-init)
+  ;; for easy copy at dired
   (setq dired-dwim-target t)
   ;; set up duplicate line final position
   (setq duplicate-line-final-position 1)
@@ -163,7 +171,16 @@
 (use-package org
   :ensure t
   :config
-  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$")))
+  ;; enable org-tempo
+  (add-to-list 'org-modules 'org-tempo t)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t)
+     (org . t)
+     (emacs-lisp . t)))
+  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 1))))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -172,9 +189,9 @@
  ;; If there is more than one, they won't work right.
  '(elfeed-feeds '("https://lobste.rs/rss"))
  '(package-selected-packages
-   '(ace-window bazel company elfeed embark expand-region kkp magit
-                move-text multiple-cursors orderless org-modern
-                yasnippet yasnippet-snippets)))
+   '(ace-window bazel company elfeed embark expand-region htmlize kkp
+                magit marginalia move-text multiple-cursors orderless
+                org-modern vertico yasnippet yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
