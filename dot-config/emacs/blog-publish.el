@@ -1,4 +1,4 @@
-;; set up org-babel
+;; -*- lexical-binding: t; -*-
 (require 'org)
 (org-babel-do-load-languages
    'org-babel-load-languages
