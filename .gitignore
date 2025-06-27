@@ -6,3 +6,4 @@
 **/emacs/ido.last
 **/emacs/eln-cache/
 **/nvim/lazy-lock.json
+/dot-config/emacs/tree-sitter/

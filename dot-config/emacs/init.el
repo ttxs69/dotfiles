@@ -24,6 +24,13 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+;; treesit
+(use-package treesit-auto
+  :ensure t
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
 ;; Example configuration for Consult
 (use-package consult
   :ensure t
@@ -337,8 +344,8 @@
  '(package-selected-packages
    '(ace-window bazel company consult elfeed embark embark-consult
                 expand-region htmlize kkp magit marginalia move-text
-                multiple-cursors orderless org-modern vertico
-                yasnippet yasnippet-snippets)))
+                multiple-cursors orderless org-modern treesit-auto
+                vertico yasnippet yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
