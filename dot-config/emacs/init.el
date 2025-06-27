@@ -25,6 +25,9 @@
   )
 
 ;; treesit
+;; you need to download treesit binary from https://github.com/emacs-tree-sitter/tree-sitter-langs
+;; and unzip them to ~/.config/emacs/tree-sitter directory
+;; and rename them to libtree-sitter-<LANG>.dylib
 (use-package treesit-auto
   :ensure t
   :config
