@@ -24,6 +24,10 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+;; fish mode
+(use-package fish-mode
+  :ensure t)
+
 ;; treesit
 ;; you need to download treesit binary from https://github.com/emacs-tree-sitter/tree-sitter-langs
 ;; and unzip them to ~/.config/emacs/tree-sitter directory
@@ -346,9 +350,9 @@
  '(elfeed-feeds '("https://lobste.rs/rss") t)
  '(package-selected-packages
    '(ace-window bazel company consult elfeed embark embark-consult
-                expand-region htmlize kkp magit marginalia move-text
-                multiple-cursors orderless org-modern treesit-auto
-                vertico yasnippet yasnippet-snippets)))
+		expand-region fish-mode htmlize kkp magit marginalia
+		move-text multiple-cursors orderless org-modern
+		treesit-auto vertico yasnippet yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
