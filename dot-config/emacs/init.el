@@ -296,6 +296,8 @@
   :init
   (load-theme 'modus-vivendi)
   :config
+  ;; set fond size
+  (set-face-attribute 'default nil :height 160)
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode)
   ;;; close backup
