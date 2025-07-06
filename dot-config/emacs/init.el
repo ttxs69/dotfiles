@@ -35,7 +35,7 @@
 (use-package treesit-auto
   :ensure t
   :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
+  (setq treesit-auto-langs '(python rust go))
   (global-treesit-auto-mode))
 
 ;; Example configuration for Consult
@@ -341,7 +341,12 @@
      (org . t)
      (emacs-lisp . t)))
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
-  (setq org-refile-targets '((org-agenda-files :maxlevel . 1))))
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
+  :bind
+  ("C-c l" . org-store-link)
+  ("C-c a" . org-agenda)
+  ("C-c c" . org-capture)
+  )
 
 
 (custom-set-variables
