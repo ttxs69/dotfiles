@@ -24,6 +24,12 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+;; undo-tree
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode))
+
 ;; fish mode
 (use-package fish-mode
   :ensure t)
@@ -359,7 +365,8 @@
    '(ace-window bazel company consult elfeed embark embark-consult
 		expand-region fish-mode htmlize kkp magit marginalia
 		move-text multiple-cursors orderless org-modern
-		treesit-auto vertico yasnippet yasnippet-snippets)))
+		treesit-auto undo-tree vertico yasnippet
+		yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
