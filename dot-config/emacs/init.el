@@ -28,6 +28,7 @@
 (use-package undo-tree
   :ensure t
   :config
+  (setq undo-tree-auto-save-history nil)
   (global-undo-tree-mode))
 
 ;; fish mode
@@ -283,9 +284,9 @@
 
 (use-package eglot
   :hook
-  (c++-mode . eglot-ensure)
-  (c-mode . eglot-ensure)
-  (python-mode . eglot-ensure))
+  (c++-ts-mode . eglot-ensure)
+  (c-ts-mode . eglot-ensure)
+  (python-ts-mode . eglot-ensure))
 
 ;; set up expand-region
 (use-package expand-region
