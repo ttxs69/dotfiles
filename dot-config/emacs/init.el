@@ -194,7 +194,7 @@
   :ensure t)
 
 ;; load blog-publish.el
-(load-file "~/.config/emacs/blog-publish.el")
+;; (load-file "~/.config/emacs/blog-publish.el")
 
 ;; elfeed
 (use-package elfeed
@@ -304,6 +304,7 @@
   (load-theme 'modus-vivendi)
   :config
   ;; set fond size
+  (global-hl-line-mode t)
   (set-face-attribute 'default nil :height 160)
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode)
