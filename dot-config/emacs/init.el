@@ -49,6 +49,8 @@
   (evil-leader/set-key
   "e" 'find-file
   "b" 'switch-to-buffer
+  "l" 'consult-line
+  "g" 'magit-status
   "k" 'kill-buffer)
   )
 
