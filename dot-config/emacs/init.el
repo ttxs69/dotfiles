@@ -24,6 +24,15 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+(use-package goto-chg
+  :ensure t)
+
+;; evil mode
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode t))
+
 ;; undo-tree
 (use-package undo-tree
   :ensure t
@@ -364,10 +373,10 @@
  ;; If there is more than one, they won't work right.
  '(elfeed-feeds '("https://lobste.rs/rss") t)
  '(package-selected-packages
-   '(ace-window bazel company consult elfeed embark embark-consult
-		expand-region fish-mode htmlize kkp magit marginalia
-		move-text multiple-cursors orderless org-modern
-		treesit-auto undo-tree vertico yasnippet
+   '(ace-window bazel company consult elfeed embark embark-consult evil
+		expand-region fish-mode goto-chg htmlize kkp magit
+		marginalia move-text multiple-cursors orderless
+		org-modern treesit-auto undo-tree vertico yasnippet
 		yasnippet-snippets)))
 
 (custom-set-faces
