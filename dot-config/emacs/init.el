@@ -40,11 +40,32 @@
 (use-package goto-chg
   :ensure t)
 
+
+(use-package evil-leader
+  :ensure t
+  :config
+  (evil-leader/set-leader "<SPC>")
+  (global-evil-leader-mode t)
+  (evil-leader/set-key
+  "e" 'find-file
+  "b" 'switch-to-buffer
+  "k" 'kill-buffer)
+  )
+
 ;; evil mode
 (use-package evil
   :ensure t
+  :after evil-leader
   :config
   (evil-mode t))
+
+(use-package evil-org
+  :ensure t
+  :after (evil org)
+  :hook (org-mode . evil-org-mode)
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 ;; undo-tree
 (use-package undo-tree
@@ -363,6 +384,7 @@
 (use-package org
   :ensure t
   :config
+  (setq org-log-done 'time)
   ;; enable org-tempo
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages
@@ -387,8 +409,8 @@
  '(elfeed-feeds '("https://lobste.rs/rss") t)
  '(package-selected-packages
    '(ace-window bazel benchmark-init company consult elfeed embark
-		embark-consult evil expand-region fish-mode goto-chg
-		htmlize kkp magit marginalia move-text
+		embark-consult evil evil-org expand-region fish-mode
+		goto-chg htmlize kkp magit marginalia move-text
 		multiple-cursors orderless org-modern ox-hugo
 		treesit-auto undo-tree vertico yasnippet
 		yasnippet-snippets)))
