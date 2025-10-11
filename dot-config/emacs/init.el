@@ -24,6 +24,13 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+;; ox-hugo
+(use-package ox-hugo
+  :ensure t   ;Auto-install the package from Melpa
+  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
+  :after ox)
+
+;; benchmark for startup time
 (use-package benchmark-init
   :ensure t
   :config
@@ -382,8 +389,9 @@
    '(ace-window bazel benchmark-init company consult elfeed embark
 		embark-consult evil expand-region fish-mode goto-chg
 		htmlize kkp magit marginalia move-text
-		multiple-cursors orderless org-modern treesit-auto
-		undo-tree vertico yasnippet yasnippet-snippets)))
+		multiple-cursors orderless org-modern ox-hugo
+		treesit-auto undo-tree vertico yasnippet
+		yasnippet-snippets)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
