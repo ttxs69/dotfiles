@@ -30,14 +30,20 @@
   (global-corfu-mode t)
   (setq corfu-auto t
         corfu-auto-delay 0.0
-        corfu-auto-prefix 1)
+        corfu-auto-prefix 2)
   )
 
 (use-package cape
   :ensure t
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  ;; Configure dabbrev to look in other buffers
+  (setq cape-dabbrev-min-length 2
+        cape-dabbrev-check-other-buffers t
+        cape-dabbrev-check-all-buffers t
+        cape-dabbrev-ignore-buffers "\\`[ *]"))
 
 (use-package key-chord
   :ensure t
