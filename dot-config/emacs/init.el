@@ -26,6 +26,7 @@
 
 (use-package corfu
   :ensure t
+  :after cape
   :init
   (global-corfu-mode t)
   (setq corfu-auto t
