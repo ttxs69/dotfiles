@@ -79,6 +79,7 @@
    "s" 'save-buffer
    ";" 'comment-dwim
    "k" 'kill-buffer
+   "." 'embark-act
    )
   )
 
