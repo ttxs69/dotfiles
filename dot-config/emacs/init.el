@@ -24,6 +24,21 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode t)
+  (setq corfu-auto t
+        corfu-auto-delay 0.0
+        corfu-auto-prefix 1)
+  )
+
+(use-package cape
+  :ensure t
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
 (use-package key-chord
   :ensure t
   :after evil
@@ -77,7 +92,7 @@
    "l" 'consult-line
    "g" 'magit-status
    "s" 'save-buffer
-   ";" 'comment-dwim
+   ";" 'comment-line
    "k" 'kill-buffer
    "." 'embark-act
    )
@@ -339,14 +354,6 @@
   :config
   (global-kkp-mode t))
 
-;; install company for auto completion
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode t)
-  :custom
-  (company-idle-delay 0.0 "Provide instant autocompletion."))
-
 (use-package eglot
   :hook
   (c++-ts-mode . eglot-ensure)
@@ -367,6 +374,15 @@
 (use-package emacs
   :init
   (load-theme 'modus-vivendi)
+  :custom
+  ;; Emacs 30 and newer: Disable Ispell completion function.
+  ;; Try `cape-dict' as an alternative.
+  (text-mode-ispell-word-completion nil)
+
+  ;; Hide commands in M-x which do not apply to the current mode.  Corfu
+  ;; commands are hidden, since they are not used via M-x. This setting is
+  ;; useful beyond Corfu.
+  (read-extended-command-predicate #'command-completion-default-include-p)
   :config
   ;; maximize window on startup
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
