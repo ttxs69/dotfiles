@@ -40,26 +40,37 @@
 (use-package goto-chg
   :ensure t)
 
-
-(use-package evil-leader
+(use-package general
   :ensure t
-  :config
-  (evil-leader/set-leader "<SPC>")
-  (global-evil-leader-mode t)
-  (evil-leader/set-key
-  "e" 'find-file
-  "b" 'switch-to-buffer
-  "l" 'consult-line
-  "g" 'magit-status
-  "k" 'kill-buffer)
   )
 
 ;; evil mode
 (use-package evil
   :ensure t
-  :after evil-leader
   :config
-  (evil-mode t))
+  (evil-mode t)
+  (defconst my-leader "SPC")
+  (defconst my-local-leader "SPC m")
+  (general-swap-key nil 'motion ";" ":")
+  (general-create-definer my-leader-def
+    :prefix my-leader)
+  (general-create-definer my-local-leader-def
+    :prefix my-local-leader)
+  ;; ** Global Keybindings
+  (my-leader-def
+   :keymaps 'normal
+   ;; bind "SPC a"
+   "a" 'org-agenda
+   "b" 'switch-to-buffer
+   "c" 'org-capture
+   "e" 'find-file
+   "l" 'consult-line
+   "g" 'magit-status
+   "s" 'save-buffer
+   ";" 'comment-dwim
+   "k" 'kill-buffer
+   )
+  )
 
 (use-package evil-org
   :ensure t
@@ -68,6 +79,11 @@
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 ;; undo-tree
 (use-package undo-tree
@@ -409,13 +425,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elfeed-feeds '("https://lobste.rs/rss") t)
- '(package-selected-packages
-   '(ace-window bazel benchmark-init company consult elfeed embark
-		embark-consult evil evil-org expand-region fish-mode
-		goto-chg htmlize kkp magit marginalia move-text
-		multiple-cursors orderless org-modern ox-hugo
-		treesit-auto undo-tree vertico yasnippet
-		yasnippet-snippets)))
+ '(package-selected-packages nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
