@@ -24,6 +24,16 @@
   (find-file "~/.config/emacs/init.el")
   )
 
+(use-package key-chord
+  :ensure t
+  :after evil
+  :config
+  ;;Exit insert mode by pressing j and then j quickly
+  (setq key-chord-two-keys-delay 0.5)
+  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  (key-chord-mode 1)
+  )
+
 ;; ox-hugo
 (use-package ox-hugo
   :ensure t   ;Auto-install the package from Melpa
@@ -58,7 +68,7 @@
     :prefix my-local-leader)
   ;; ** Global Keybindings
   (my-leader-def
-   :keymaps 'normal
+   :keymaps '(normal visual)
    ;; bind "SPC a"
    "a" 'org-agenda
    "b" 'switch-to-buffer
@@ -212,12 +222,6 @@
 
 (use-package embark
   :ensure t
-
-  :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-
   :init
 
   ;; Optionally replace the key help with a completing-read interface
@@ -254,9 +258,6 @@
 (use-package htmlize
   :ensure t)
 
-;; load blog-publish.el
-;; (load-file "~/.config/emacs/blog-publish.el")
-
 ;; elfeed
 (use-package elfeed
   :ensure t
@@ -281,8 +282,10 @@
 ;; org-modern
 (use-package org-modern
   :ensure t
-  :config
-  (global-org-modern-mode))
+  :after org
+  :hook
+  (org-mode . org-modern-mode)
+  )
 
 ;; marginalia, for more context in minibuffer
 (use-package marginalia
@@ -364,6 +367,8 @@
   :init
   (load-theme 'modus-vivendi)
   :config
+  ;; maximize window on startup
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
   ;; set fond size
   (global-hl-line-mode t)
   (set-face-attribute 'default nil :height 160)
@@ -412,6 +417,7 @@
      (emacs-lisp . t)))
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
   (setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
   :bind
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda)
@@ -424,7 +430,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(elfeed-feeds '("https://lobste.rs/rss") t)
  '(package-selected-packages nil))
 
 (custom-set-faces
