@@ -60,55 +60,6 @@
   ;; To disable collection of benchmark data after init is done.
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-(use-package goto-chg
-  :ensure t)
-
-(use-package general
-  :ensure t
-  )
-
-;; evil mode
-(use-package evil
-  :ensure t
-  :config
-  (evil-mode t)
-  (defconst my-leader "SPC")
-  (defconst my-local-leader "SPC m")
-  (general-swap-key nil 'motion ";" ":")
-  (general-create-definer my-leader-def
-    :prefix my-leader)
-  (general-create-definer my-local-leader-def
-    :prefix my-local-leader)
-  ;; ** Global Keybindings
-  (my-leader-def
-   :keymaps '(normal visual)
-   ;; bind "SPC a"
-   "a" 'org-agenda
-   "b" 'switch-to-buffer
-   "c" 'org-capture
-   "e" 'find-file
-   "l" 'consult-line
-   "g" 'magit-status
-   "s" 'save-buffer
-   ";" 'comment-line
-   "k" 'kill-buffer
-   "." 'embark-act
-   )
-  )
-
-(use-package evil-org
-  :ensure t
-  :after (evil org)
-  :hook (org-mode . evil-org-mode)
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
-
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1))
-
 ;; undo-tree
 (use-package undo-tree
   :ensure t
